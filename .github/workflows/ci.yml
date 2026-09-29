@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      CDS_PLUGIN_UI5_ACTIVE: 'false'
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: No landscape details in the repository
+        run: |
+          npm run check-metadata
+          if git ls-files --error-unmatch default-env.json >/dev/null 2>&1; then
+            echo "::error file=default-env.json::default-env.json is committed. It names your destinations and proxy; remove it and keep it local."
+            exit 1
+          fi
+
+      - name: Test (mock mode and Gateway contract)
+        run: npm test
+
+      - name: Production build
+        run: npx cds build --production

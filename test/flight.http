@@ -1,0 +1,12 @@
+# Two calls that split every connectivity problem in half.
+# Use them from a terminal in SAP Business Application Studio (or the REST Client
+# extension in VS Code) with cds watch --profile bas running.
+#
+#   first works, second fails -> CAP problem (model, handler, profile)
+#   both fail                 -> destination, Cloud Connector or ECC
+
+### 1. ECC directly, through the destination (BAS proxy)
+GET http://ecc-gateway.dest/sap/opu/odata/IWFND/SAMPLEFLIGHT/FlightCollection?$top=3&$format=json
+
+### 2. The same data through CAP, as OData V4
+GET http://localhost:4004/odata/v4/flight/Flights?$top=3
