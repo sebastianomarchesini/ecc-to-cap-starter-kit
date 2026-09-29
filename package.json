@@ -1,0 +1,74 @@
+{
+  "name": "ecc-to-cap-starter-kit",
+  "version": "1.0.0",
+  "description": "A reference path from a running SAP ECC system to a first clean-core extension with CAP: a read-only CAP service over ECC's SAMPLEFLIGHT OData service, with a Fiori elements UI.",
+  "license": "Apache-2.0",
+  "author": "Sebastiano Marchesini",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sebastianomarchesini/ecc-to-cap-starter-kit.git"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@sap-cloud-sdk/connectivity": "^4",
+    "@sap-cloud-sdk/http-client": "^4",
+    "@sap-cloud-sdk/resilience": "^4",
+    "@sap/cds": "^10",
+    "@sap/xssec": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/cds-test": "^1.0.2",
+    "@cap-js/sqlite": "^3",
+    "@sap/cds-dk": "^10",
+    "cds-plugin-ui5": "^0.17.0",
+    "rimraf": "^5.0.5"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch": "cds watch",
+    "bas": "cds watch --profile bas",
+    "watch-flightproject": "cds watch --open flightproject/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "test": "node --test --test-timeout=60000 --test-reporter=spec test/*.test.js",
+    "strip-metadata": "node scripts/strip-metadata-links.mjs srv/external/SAMPLEFLIGHT.edmx",
+    "check-metadata": "node scripts/strip-metadata-links.mjs --check srv/external/SAMPLEFLIGHT.edmx",
+    "undeploy": "cf undeploy FLIGHTCAP --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+  },
+  "private": true,
+  "cds": {
+    "requires": {
+      "[production]": {
+        "auth": "xsuaa"
+      },
+      "connectivity": true,
+      "destinations": true,
+      "html5-repo": true,
+      "SAMPLEFLIGHT": {
+        "kind": "odata-v2",
+        "model": "srv/external/SAMPLEFLIGHT",
+        "[bas]": {
+          "credentials": {
+            "destination": "ecc-gateway",
+            "path": "/sap/opu/odata/IWFND/SAMPLEFLIGHT"
+          }
+        },
+        "[production]": {
+          "credentials": {
+            "destination": "ecc-gateway",
+            "path": "/sap/opu/odata/IWFND/SAMPLEFLIGHT"
+          }
+        }
+      }
+    }
+  },
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/flightproject"
+  ]
+}

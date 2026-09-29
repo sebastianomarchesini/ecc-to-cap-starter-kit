@@ -1,0 +1,29 @@
+# dependencies
+node_modules/
+
+# build output
+gen/
+resources/
+mta_archives/
+*.mtar
+*_mta_build_tmp
+app/*/dist/
+target/
+_out/
+
+# local configuration: these files name your landscape, never commit them
+default-env.json
+default-*.json
+.cdsrc-private.json
+.env
+
+# generator logs, local databases, editor and OS files
+.gen/
+*.log
+*.sqlite
+*.db
+.DS_Store
+.vscode/settings.json
+
+# @cap-js/cds-typer
+@cds-models

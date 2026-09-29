@@ -1,0 +1,9 @@
+{
+  "destinations": [
+    {
+      "name": "ecc-gateway",
+      "url": "http://ecc-gateway.dest",
+      "proxyConfiguration": { "host": "127.0.0.1", "port": 8887, "protocol": "http" }
+    }
+  ]
+}
