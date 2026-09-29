@@ -1,0 +1,34 @@
+name: Field report
+description: You ran the kit against your own system. Tell us what it took.
+labels: [field report]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Reports like this show where the kit fits and where it needs work. Leave out anything that identifies your systems: host names, client numbers, user names.
+  - type: dropdown
+    id: level
+    attributes:
+      label: How far did you take it?
+      multiple: true
+      options:
+        - Mock mode
+        - Live ECC from SAP Business Application Studio
+        - Deployed on Cloud Foundry
+        - Adapted it to another Gateway service
+    validations:
+      required: true
+  - type: input
+    id: backend
+    attributes:
+      label: Backend
+      description: For example "ECC 6.0 EHP 7 with embedded Gateway".
+  - type: textarea
+    id: changes
+    attributes:
+      label: What you had to change
+      description: Service name or path, field mapping, authentication, Cloud Connector settings, anything else.
+  - type: textarea
+    id: time
+    attributes:
+      label: What would have saved you time

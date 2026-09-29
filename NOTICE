@@ -1,0 +1,26 @@
+ECC-to-CAP Starter Kit
+https://github.com/sebastianomarchesini/ecc-to-cap-starter-kit
+
+The source code in this repository is licensed under the Apache License,
+Version 2.0 (see LICENSE).
+
+Not covered by that license:
+
+- docs/slides/: the slide deck of the SAP Devtoberfest 2026 session, provided
+  for reference. It uses the Devtoberfest 2026 presentation template; the
+  template design and SAP logos belong to SAP SE.
+
+Third-party material:
+
+- srv/external/SAMPLEFLIGHT.edmx is the service metadata of SAP's standard
+  SAMPLEFLIGHT Gateway service, saved from an ECC system with its host links
+  removed. The rows in srv/external/data/ are synthetic sample data in the
+  shape of SAP's flight model.
+
+Trademarks:
+
+SAP, SAP ECC, SAP S/4HANA, SAP Fiori, SAP Business Application Studio and
+other SAP products and services mentioned herein are trademarks or registered
+trademarks of SAP SE in Germany and other countries. This is a personal
+community project. It is not an SAP product and is not affiliated with,
+sponsored by or endorsed by SAP SE.

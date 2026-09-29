@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: CAP documentation
+    url: https://cap.cloud.sap/docs/
+    about: Questions about CAP itself
+  - name: SAP Community
+    url: https://community.sap.com/
+    about: General SAP questions

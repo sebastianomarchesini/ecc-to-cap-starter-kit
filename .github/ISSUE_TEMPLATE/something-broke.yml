@@ -1,0 +1,41 @@
+name: Something broke
+description: The kit did not work on your landscape, or the docs led you astray.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time. Before you paste logs or screenshots, remove host names, IP addresses, client numbers, user names and destination URLs: they identify your landscape.
+  - type: dropdown
+    id: level
+    attributes:
+      label: Where did it break?
+      options:
+        - Mock mode (npm run watch)
+        - Against ECC from SAP Business Application Studio (npm run bas)
+        - Deployed on Cloud Foundry
+        - Building it myself (docs/workshop.md)
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what you got instead. Include the error text.
+    validations:
+      required: true
+  - type: input
+    id: backend
+    attributes:
+      label: Backend
+      description: For example "ECC 6.0 EHP 8, embedded Gateway" or "S/4HANA on-premise 2023".
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: The @sap/cds and Node.js lines from `cds version`.
+  - type: textarea
+    id: log
+    attributes:
+      label: Log excerpt (redacted)
+      render: text

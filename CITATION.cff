@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you build on this starter kit in a publication, a course or another repository, please cite it as below."
+type: software
+title: "ECC-to-CAP Starter Kit"
+abstract: >-
+  A reference path from a running SAP ECC system to a first clean-core extension
+  with the SAP Cloud Application Programming Model (CAP): a read-only CAP service
+  that consumes ECC's SAMPLEFLIGHT OData V2 service through SAP Gateway, the
+  Cloud Connector and a destination, with a Fiori elements UI, a mock mode that
+  needs no backend, and a contract test for the CAP-to-Gateway translation.
+authors:
+  - given-names: Sebastiano
+    family-names: Marchesini
+    website: "https://sebastianomarchesini.com"
+repository-code: "https://github.com/sebastianomarchesini/ecc-to-cap-starter-kit"
+license: Apache-2.0
+version: 1.0.0
+keywords:
+  - SAP
+  - SAP ECC
+  - SAP Cloud Application Programming Model
+  - CAP
+  - OData
+  - SAP Gateway
+  - Fiori elements
+  - Cloud Foundry
+  - clean core
+  - S/4HANA migration
